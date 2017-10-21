@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
   <!-- BootstrapTables -->
   <link rel="stylesheet" href="../bower_components/bootstrap-table-master/dist/bootstrap-table.css">
+  <link rel="stylesheet" href="../bower_components/bootstrap-table-click-edit-row/bootstrap-table-click-edit-row.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -183,6 +184,10 @@
 
           <div class="box">
             <div class="box-body">
+              <div id="toolbar">
+                  <button id="delete" class="btn btn-default">删除</button>
+                  <button id="create" class="btn btn-default">添加</button>
+              </div>
               <table id="teamcoach" class="table table-bordered table-striped">
               </table>
             </div>
@@ -236,24 +241,33 @@
       showToggle:true,
       showColumns:true,
       advancedSearch:true,
+      toolbar:"#toolbar",
       sortable:true,
       idTable:"advancedTable",
       columns: [{
-          field: 'name',
-          title: '姓名'
+          field: 'state',
+          checkbox:true,
+      },{
+          field: 'ID',
+          title: '身份证号'
       }, {
-          field: 'id',
-          title: '身份证号',
+          field: 'Name',
+          title: '姓名',
           sortable: true,
           editable:"input"
       }, {
-          field: 'number',
-          title: '电话号码',
+          field: 'PhoneNum',
+          title: '电话',
           sortable: true,
           editable:"input"
       }, {
-          field: 'team',
-          title: '团队',
+          field: 'Gender',
+          title: '性别',
+          sortable: true,
+          editable:"input"
+      }, {
+          field: 'TeamName',
+          title: '小队名称',
           sortable: true,
           editable:"input"
       }],
@@ -262,6 +276,19 @@
       }
     });
   })
+
+  $(function () {
+      $('#delete').click(function () {
+          var ids = $.map($("#teamcoach").bootstrapTable('getSelections'), function (row) {
+              return row.ID;
+          });
+          $("#teamcoach").bootstrapTable('remove', {
+              field: 'ID',
+              values: ids
+          });
+          //并且执行向服务器的提交过程
+      });
+    });
 </script>
 </body>
 </html>
