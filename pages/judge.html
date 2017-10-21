@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="../dist/css/skins/skin-blue.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -180,10 +180,9 @@
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
-
           <div class="box">
             <div class="box-body">
-              <table id="teamcoach" class="table table-bordered table-striped">
+              <table id="judge" class="table table-bordered table-striped">
               </table>
             </div>
             <!-- /.box-body -->
@@ -212,6 +211,7 @@
 <!-- Bootstrap 3.3.7 -->
 <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- BootstrapTables -->
+<script src="../bower_components/bootstrap-table-master/dist/bootstrap-table.js"></script>
 <script src="../bower_components/bootstrap-table-master/dist/locale/bootstrap-table-zh-CN.js"></script>
 <script src="../bower_components/bootstrap-table-click-edit-row/bootstrap-table-click-edit-row.js"></script>
 <script src="../bower_components/bootstrap-table-toolbar/bootstrap-table-toolbar.js"></script>
@@ -226,8 +226,8 @@
 <!-- page script -->
 <script>
   $(function () {
-    $('#teamcoach').bootstrapTable({
-      url: 'teamcoach.json',
+    $('#judge').bootstrapTable({
+      url: 'judge.json',
       clickEdit: true,
       pagination:true,
       search:true,
@@ -238,26 +238,31 @@
       sortable:true,
       idTable:"advancedTable",
       columns: [{
-          field: 'name',
-          title: '姓名'
+          field: 'ID',
+          title: '身份证'
       }, {
-          field: 'id',
-          title: '身份证号',
+          field: 'JudgeAccount',
+          title: '裁判账号',
           sortable: true,
           editable:"input"
       }, {
-          field: 'number',
-          title: '电话号码',
+          field: 'Name',
+          title: '姓名',
           sortable: true,
           editable:"input"
       }, {
-          field: 'team',
-          title: '团队',
+          field: 'PhoneNum',
+          title: '电话',
           sortable: true,
           editable:"input"
+      },{
+        field: 'Password',
+        title: '密码',
+        sortable: true,
+        editable:"input"
       }],
       responseHandler: function (res) {
-          return res.messages;
+          return res;
       }
     });
   })

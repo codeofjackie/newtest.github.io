@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="../dist/css/skins/skin-blue.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -183,7 +183,10 @@
 
           <div class="box">
             <div class="box-body">
-              <table id="teamcoach" class="table table-bordered table-striped">
+              <table id="match" class="table table-bordered table-striped">
+              </table>
+              </br>
+              <table id="score" class="table table-bordered table-striped">
               </table>
             </div>
             <!-- /.box-body -->
@@ -212,6 +215,7 @@
 <!-- Bootstrap 3.3.7 -->
 <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- BootstrapTables -->
+<script src="../bower_components/bootstrap-table-master/dist/bootstrap-table.js"></script>
 <script src="../bower_components/bootstrap-table-master/dist/locale/bootstrap-table-zh-CN.js"></script>
 <script src="../bower_components/bootstrap-table-click-edit-row/bootstrap-table-click-edit-row.js"></script>
 <script src="../bower_components/bootstrap-table-toolbar/bootstrap-table-toolbar.js"></script>
@@ -226,8 +230,8 @@
 <!-- page script -->
 <script>
   $(function () {
-    $('#teamcoach').bootstrapTable({
-      url: 'teamcoach.json',
+    $('#match').bootstrapTable({
+      url: 'match.json',
       clickEdit: true,
       pagination:true,
       search:true,
@@ -239,25 +243,59 @@
       idTable:"advancedTable",
       columns: [{
           field: 'name',
-          title: '姓名'
+          title: '比赛号'
       }, {
           field: 'id',
-          title: '身份证号',
+          title: '比赛年龄组',
           sortable: true,
           editable:"input"
       }, {
           field: 'number',
-          title: '电话号码',
+          title: '项目',
           sortable: true,
           editable:"input"
       }, {
           field: 'team',
-          title: '团队',
+          title: '主裁判身份证',
+          sortable: true,
+          editable:"input"
+      }, {
+          field: 'team',
+          title: '预期开始时间',
+          sortable: true,
+          editable:"input"
+      }, {
+          field: 'team',
+          title: '预期结束时间',
           sortable: true,
           editable:"input"
       }],
       responseHandler: function (res) {
           return res.messages;
+      }
+    });
+    $('#score').bootstrapTable({
+      url: 'match.json',
+      clickEdit: true,
+      columns: [{
+          field: 'MatchID',
+          title: '比赛号'
+      }, {
+          field: 'JudgeID',
+          title: '裁判身份证',
+      }, {
+          field: 'PlayerID',
+          title: '运动员号',
+      },{
+          field: 'IsChief',
+          title: '是否为主裁判',
+      },{
+          field: 'Score',
+          title: '成绩',
+          editable:"input"
+      }],
+      responseHandler: function (res) {
+          return res.Score;
       }
     });
   })
