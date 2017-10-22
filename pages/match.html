@@ -312,6 +312,26 @@
           //并且执行向服务器的提交过程
       });
     });
+  
+  //插入操作
+  $(function () {
+  $('.modal-footer > #submit').click(function () {
+    $("#match").bootstrapTable('insertRow', {
+        index:1,
+        row:{
+          MatchID:$("#MatchID").val(),
+          Group:$("#Group").val(),
+          Event:$("#Event").val(),
+          ChiefID:$("#ChiefID").val(),
+          StartTime:$("#StartTime").val(),
+          EndTime:$("#EndTime").val()
+        }
+      }
+    );
+      //执行插入操作，并向服务器提交数据
+      //并且执行向服务器的提交过程
+  });
+  });
 </script>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
@@ -353,7 +373,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-        <button type="button" class="btn btn-primary">确认</button>
+        <button type="button" class="btn btn-primary"id="submit">确认</button>
       </div>
     </div>
   </div>

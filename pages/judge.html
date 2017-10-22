@@ -266,6 +266,7 @@
     });
   })
 
+  //删除操作
   $(function () {
       $('#delete').click(function () {
           var ids = $.map($("#judge").bootstrapTable('getSelections'), function (row) {
@@ -278,6 +279,29 @@
           //并且执行向服务器的提交过程
       });
     });
+
+  //添加操作
+  $(function () {
+    $('.modal-footer > #submit').click(function () {
+      $("#judge").bootstrapTable('insertRow', {
+          index:1,
+          row:{
+            ID:$("#ID").val(),
+            JudgeAccount:$("#JudgeAccount").val(),
+            Name:$("#Name").val(),
+            PhoneNum:$("#PhoneNum").val(),
+            Password:$("#Password").val()
+          }
+        }
+      );
+        //执行插入操作，并向服务器提交数据
+        //并且执行向服务器的提交过程
+    });
+  });
+
+  //修改操作
+
+
 </script>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
@@ -291,16 +315,16 @@
         <div class="container-fluid" style="padding-right: 0px;padding-left: 0px;">
         <form class="form-horizontal">
           <div class="form-group">
-            <label for="id" class="control-label col-sm-4">身份证</label>
-            <div class="col-sm-6"><input type="text" class="form-control input-md" id="id"></div>
+            <label for="ID" class="control-label col-sm-4">身份证</label>
+            <div class="col-sm-6"><input type="text" class="form-control input-md" id="ID"></div>
           </div>
           <div class="form-group">
-            <label for="judgeaccount" class="control-label col-sm-4">裁判账号</label>
-            <div class="col-sm-6"><input type="text" class="form-control input-md" id="judgeaccount"></div>
+            <label for="JudgeAccount" class="control-label col-sm-4">裁判账号</label>
+            <div class="col-sm-6"><input type="text" class="form-control input-md" id="JudgeAccount"></div>
           </div>
           <div class="form-group">
-              <label for="name" class="control-label col-sm-4">姓名</label>
-              <div class="col-sm-6"><input type="text" class="form-control input-md" id="name"></div>
+              <label for="Name" class="control-label col-sm-4">姓名</label>
+              <div class="col-sm-6"><input type="text" class="form-control input-md" id="Name"></div>
           </div>
           <div class="form-group">
               <label for="PhoneNum" class="control-label col-sm-4">电话</label>
@@ -315,7 +339,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-        <button type="button" class="btn btn-primary">确认</button>
+        <button type="button" class="btn btn-primary" id="submit">确认</button>
       </div>
     </div>
   </div>

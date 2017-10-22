@@ -278,6 +278,26 @@
           //并且执行向服务器的提交过程
       });
     });
+
+
+     //插入操作
+  $(function () {
+    $('.modal-footer > #submit').click(function () {
+      $("#team").bootstrapTable('insertRow', {
+          index:1,
+          row:{
+            ID:$("#ID").val(),
+            Name:$("#Name").val(),
+            PhoneNum:$("#PhoneNum").val(),
+            Gender:$("#Gender").val(),
+            TeamName:$("#TeamName").val(),
+          }
+        }
+      );
+        //执行插入操作，并向服务器提交数据
+        //并且执行向服务器的提交过程
+    });
+  });
 </script>
 </body>
 
@@ -316,7 +336,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-        <button type="button" class="btn btn-primary">确认</button>
+        <button type="button" class="btn btn-primary"id="submit">确认</button>
       </div>
     </div>
   </div>
