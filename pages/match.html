@@ -170,7 +170,12 @@
             <div class="box-body">
               <div id="toolbar">
                   <button id="delete" class="btn btn-default">删除</button>
-                  <button id="create" class="btn btn-default">添加</button>
+                  <button id="create" 
+                  class="btn btn-default"
+                  data-toggle="modal" 
+                  data-target="#exampleModal">
+                  添加
+                  </button>
               </div>
               <table id="match" class="table table-bordered table-striped">
               </table>
@@ -308,5 +313,50 @@
       });
     });
 </script>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">添加记录</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid" style="padding-right: 0px;padding-left: 0px;">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label for="MatchID" class="control-label col-sm-4">比赛号</label>
+            <div class="col-sm-6"><input type="text" class="form-control input-md" id="MatchID"></div>
+          </div>
+          <div class="form-group">
+              <label for="Group" class="control-label col-sm-4">比赛年龄组</label>
+              <div class="col-sm-6"><input type="text" class="form-control input-md" id="Group"></div>
+          </div>
+          <div class="form-group">
+              <label for="Event" class="control-label col-sm-4">项目</label>
+              <div class="col-sm-6"><input type="text" class="form-control input-md" id="Event"></div>
+          </div>
+          <div class="form-group">
+              <label for="ChiefID" class="control-label col-sm-4">主裁判身份证</label>
+              <div class="col-sm-6"><input type="text" class="form-control input-md" id="ChiefID"></div>
+          </div>
+          <div class="form-group">
+              <label for="StartTime" class="control-label col-sm-4">预期开始时间</label>
+              <div class="col-sm-6"><input type="text" class="form-control input-md" id="StartTime"></div>
+          </div>
+          <div class="form-group">
+              <label for="EndTime" class="control-label col-sm-4">预期结束时间</label>
+              <div class="col-sm-6"><input type="text" class="form-control input-md" id="EndTime"></div>
+          </div>
+        </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary">确认</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>

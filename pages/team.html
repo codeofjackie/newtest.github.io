@@ -170,8 +170,13 @@
             <div class="box-body">
               <div id="toolbar">
                   <button id="delete" class="btn btn-default">删除</button>
-                  <button id="create" class="btn btn-default">添加</button>
-              </div>
+                  <button id="create" 
+                  class="btn btn-default"
+                  data-toggle="modal" 
+                  data-target="#exampleModal">
+                  添加
+                  </button>
+                </div>
               <table id="team" class="table table-bordered table-striped">
               </table>
             </div>
@@ -265,4 +270,38 @@
     });
 </script>
 </body>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">添加记录</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid" style="padding-right: 0px;padding-left: 0px;">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label for="TeamName" class="control-label col-sm-4">小队名称</label>
+            <div class="col-sm-6"><input type="text" class="form-control input-md" id="TeamName"></div>
+          </div>
+          <div class="form-group">
+            <label for="Account" class="control-label col-sm-4">账号</label>
+            <div class="col-sm-6"><input type="text" class="form-control input-md" id="Account"></div>
+          </div>
+          <div class="form-group">
+              <label for="Password" class="control-label col-sm-4">密码</label>
+              <div class="col-sm-6"><input type="text" class="form-control input-md" id="Password"></div>
+          </div>
+        </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary">确认</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </html>
