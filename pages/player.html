@@ -288,6 +288,28 @@
           //并且执行向服务器的提交过程
       });
     });
+
+
+    //插入操作
+  $(function () {
+  $('.modal-footer > #submit').click(function () {
+    $("#player").bootstrapTable('insertRow', {
+        index:1,
+        row:{
+          PlayerID:$("#PlayerID").val(),
+          ID:$("#ID").val(),
+          Name:$("#Name").val(),
+          Age:$("#Age").val(),
+          Group:$("#Group").val(),
+          CultureScore:$("#CultureScore").val(),
+          TeamName:$("#TeamName").val(),
+        }
+      }
+    );
+      //执行插入操作，并向服务器提交数据
+      //并且执行向服务器的提交过程
+  });
+  });
 </script>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
