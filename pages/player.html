@@ -292,23 +292,23 @@
 
     //插入操作
   $(function () {
-  $('.modal-footer > #submit').click(function () {
-    $("#player").bootstrapTable('insertRow', {
-        index:1,
-        row:{
-          PlayerID:$("#PlayerID").val(),
-          ID:$("#ID").val(),
-          Name:$("#Name").val(),
-          Age:$("#Age").val(),
-          Group:$("#Group").val(),
-          CultureScore:$("#CultureScore").val(),
-          TeamName:$("#TeamName").val(),
+    $('.modal-footer > #submit').click(function () {
+      $("#player").bootstrapTable('insertRow', {
+          index:1,
+          row:{
+            PlayerID:$("#PlayerID").val(),
+            ID:$("#ID").val(),
+            Name:$("#Name").val(),
+            Age:$("#Age").val(),
+            Group:$("#Group").val(),
+            CultureScore:$("#CultureScore").val(),
+            TeamName:$("#TeamName").val(),
+          }
         }
-      }
-    );
-      //执行插入操作，并向服务器提交数据
-      //并且执行向服务器的提交过程
-  });
+      );
+        //执行插入操作，并向服务器提交数据
+        //并且执行向服务器的提交过程
+    });
   });
 </script>
 
@@ -327,12 +327,12 @@
             <div class="col-sm-6"><input type="text" class="form-control input-md" id="PlayerID"></div>
           </div>
           <div class="form-group">
-            <label for="id" class="control-label col-sm-4">身份证号</label>
-            <div class="col-sm-6"><input type="text" class="form-control input-md" id="id"></div>
+            <label for="ID" class="control-label col-sm-4">身份证号</label>
+            <div class="col-sm-6"><input type="text" class="form-control input-md" id="ID"></div>
           </div>
           <div class="form-group">
-              <label for="name" class="control-label col-sm-4">姓名</label>
-              <div class="col-sm-6"><input type="text" class="form-control input-md" id="name"></div>
+              <label for="Name" class="control-label col-sm-4">姓名</label>
+              <div class="col-sm-6"><input type="text" class="form-control input-md" id="Name"></div>
           </div>
           <div class="form-group">
               <label for="Age" class="control-label col-sm-4">年龄</label>
@@ -355,7 +355,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-        <button type="button" class="btn btn-primary">确认</button>
+        <button type="button" class="btn btn-primary" id="submit">确认</button>
       </div>
     </div>
   </div>
