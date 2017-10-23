@@ -30,25 +30,54 @@
             cancel = '<button type="button" class="btn btn-default btn-sm editable-cancel">取消</button>';
 
         var replaceData = function(){
-            txt = [];
-            tarNode.find('td').find('input[type="text"]').each(function(i, td){
-                txt.push($(td).eq(0).val());
-            });
-            tarNode.find('select').each(function(i, td){
-                txt.push($('#'+td.id+' option:selected').val());
-            });
+
             $('.table').bootstrapTable('updateRow', {
                 index: table.$data.thId,
                 row: {
-                    noOld: txt[0],
-                    area: tarNode.find('select').eq(0).children(':selected').text(),
-                    town: tarNode.find('select').eq(1).children(':selected').text(),
-                    address: txt[1]
+                    TeamName: getValue('TeamName',table.$data.thId+1),
+                    TeamAccount: getValue('TeamAccount',table.$data.thId+1),
+                    Password: getValue('Password',table.$data.thId+1),
+                    ID:getValue('ID',table.$data.thId+1),
+                    Name:getValue('Name',table.$data.thId+1),
+                    PhoneNum:getValue('PhoneNum',table.$data.thId+1),
+                    Gender:getValue('Gender',table.$data.thId+1),
+                    PlayerID:getValue('PlayerID',table.$data.thId+1),
+                    Age:getValue('Age',table.$data.thId+1),
+                    Group:getValue('Group',table.$data.thId+1),
+                    CultureScore:getValue('CultureScore',table.$data.thId+1),
+                    MatchID:getValue('MatchID',table.$data.thId+1),
+                    Event:getValue('Event',table.$data.thId+1),
+                    ChiefID:getValue('ChiefID',table.$data.thId+1),
+                    StartTime:getValue('StartTime',table.$data.thId+1),
+                    EndTime:getValue('EndTime',table.$data.thId+1),
+                    JudgeAccount:getValue('JudgeAccount',table.$data.thId+1)
                 }
             });
+
+            /*$.post(window.location.hostname+"/GameAdmin/Set",{
+                Type:"Upgrade",
+                Table:table.$option.uniqueId,
+                TeamName: getValue('TeamName',table.$data.thId+1),
+                TeamAccount: getValue('TeamAccount',table.$data.thId+1),
+                Password: getValue('Password',table.$data.thId+1),
+                ID:getValue('ID',table.$data.thId+1),
+                Name:getValue('Name',table.$data.thId+1),
+                PhoneNum:getValue('PhoneNum',table.$data.thId+1),
+                Gender:getValue('Gender',table.$data.thId+1),
+                PlayerID:getValue('PlayerID',table.$data.thId+1),
+                Age:getValue('Age',table.$data.thId+1),
+                Group:getValue('Group',table.$data.thId+1),
+                CultureScore:getValue('CultureScore',table.$data.thId+1),
+                MatchID:getValue('MatchID',table.$data.thId+1),
+                Event:getValue('Event',table.$data.thId+1),
+                ChiefID:getValue('ChiefID',table.$data.thId+1),
+                StartTime:getValue('StartTime',table.$data.thId+1),
+                EndTime:getValue('EndTime',table.$data.thId+1),
+                JudgeAccount:getValue('JudgeAccount',table.$data.thId+1)
+            })*/
+
             $('#tooling').remove();
             table.editing = true;
-            // updateToServerSide(table.$data.itemid, txt);
             return false;
         };
 
@@ -98,10 +127,20 @@
         }
     }
 
-    function updateToServerSide(item, data){
-        var itemid = $(item).find('a').attr('href').match(/\d+/g)[0];
-        var datas = {'treeId': itemid, 'oldTreeSerialNo': data[0], 'adminDivision': data[2], 'adminUnit': data[3], 'treeAddr': data[1]}; //傳送至伺服器端的Data產生處，需手動修改對應表格
-        store( 'data/update', datas)
+    function getValue(property,rowindex) {
+        var tableTotal = 1;
+        //为当前页面表格的数量
+        var colindex = $('.table').eq(tableTotal-1).find("[data-field='"+ property +"']").index();
+        var cells = document.getElementsByClassName('table')[tableTotal-1].rows[rowindex].cells
+        
+        if ($(cells[colindex]).find('input')) {
+            var cellcontent = $(cells[colindex]).find('input').first().val();//当单元格为输入框时;
+        }
+        else {
+            var cellcontent = cells[colindex].innerHTML//当单元格不可编辑时
+        }
+        //获取单元格内容，其中row为行序，col为列序
+        return cellcontent;
     }
 
     var BootstrapTable = $.fn.bootstrapTable.Constructor,

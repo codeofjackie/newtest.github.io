@@ -235,6 +235,7 @@
       showColumns:true,
       advancedSearch:true,
       toolbar:"#toolbar",
+      uniqueId:"Match",
       sortable:true,
       idTable:"advancedTable",
       columns: [{
@@ -276,7 +277,6 @@
     });
     $('#score').bootstrapTable({
       url: 'match.json',
-      clickEdit: true,
       columns: [{
           field: 'MatchID',
           title: '比赛号'
@@ -292,7 +292,6 @@
       },{
           field: 'Score',
           title: '成绩',
-          editable:"input"
       }],
       responseHandler: function (res) {
           return res.Score;
@@ -330,6 +329,7 @@
     );
       //执行插入操作，并向服务器提交数据
       //并且执行向服务器的提交过程
+      alert("插入成功");
   });
   });
 </script>
